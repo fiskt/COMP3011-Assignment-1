@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Speech To Text</title>
+</head>
+<body>
+        <div class="content top-bar">
+            <!-- Top bar -->
+
+            <h1>Speech to text</h1>
+        </div>
+        <div class="content main-content">
+            <!-- Main content -->
+
+            <div class="content-container audio-container">
+                <!-- Recording / file upload -->
+                <div>
+                    <button id="open-record-btn" disabled>Record Audio</button>
+                    <button id="open-upload-btn">Upload Audio</button>
+                </div>
+                <div class="content-container input-container" id="record-input-container">
+                    <!-- Recording -->
+
+                    <button
+                        id="record-btn"
+                    >
+                        Record
+                    </button>
+                    <button
+                        id="download-btn"
+                        disabled
+                    >
+                        Download
+                    </button>
+                </div>
+
+                <div class="content-container input-container" id="upload-input-container" hidden>
+                    <!-- File Upload -->
+                     
+                    <input
+                        type="file"
+                        accept="audio/webm"
+                        id="file-input"
+                    />
+
+                </div>
+
+                <div class="content-container">
+                    <!-- Controls -->
+                    <p id="fileStatus">No audio file selected</p>
+                    <audio
+                        id="audio-player"
+                        src=""
+                        controls
+                    >
+                    </audio>
+                    <button>Send</button>
+                </div>
+            </div>
+            <div class="content-container text-output-container">
+                <!-- Text output -->
+
+                 <div class="content-container text-output-controls">
+                    <!-- Copy buttons -->
+
+                    <button>Copy</button>
+                 </div>
+                 <div class="content-container text-output-box">
+                    <!-- Scrollable text output -->
+                    <p>Output text goes here</p>
+                 </div>
+            </div>
+        </div>
+        <script src="script.js"></script>
+</body>
+</html>
