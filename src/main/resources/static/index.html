@@ -18,34 +18,26 @@
             <div class="content-container audio-container">
                 <!-- Recording / file upload -->
                 <div>
-                    <button id="open-record-btn" disabled>Record Audio</button>
-                    <button id="open-upload-btn">Upload Audio</button>
-                </div>
-                <div class="content-container input-container" id="record-input-container">
-                    <!-- Recording -->
-
-                    <button
-                        id="record-btn"
-                    >
-                        Record
-                    </button>
-                    <button
-                        id="download-btn"
-                        disabled
-                    >
-                        Download
-                    </button>
-                </div>
-
-                <div class="content-container input-container" id="upload-input-container" hidden>
-                    <!-- File Upload -->
-                     
-                    <input
-                        type="file"
-                        accept="audio/webm"
-                        id="file-input"
-                    />
-
+                    <div id="input-type-container">
+                        <button id="open-record-btn" disabled>Record Audio</button>
+                        <button id="open-upload-btn">Upload Audio</button>
+                    </div>
+                    <div class="input-container" id="record-input-container">
+                        <!-- Recording -->
+    
+                        <button id="record-btn">Record</button>
+                        <button id="download-btn" disabled>Download</button>
+                    </div>
+    
+                    <div class="input-container" id="upload-input-container" hidden>
+                        <!-- File Upload -->
+                         
+                        <input
+                            type="file"
+                            accept="audio/webm"
+                            id="file-input"
+                        />
+                    </div>
                 </div>
 
                 <div class="content-container">
@@ -60,12 +52,13 @@
                     <button>Send</button>
                 </div>
             </div>
+
             <div class="content-container text-output-container">
                 <!-- Text output -->
 
-                 <div class="content-container text-output-controls">
+                 <div id="text-output-controls">
                     <!-- Copy buttons -->
-
+                    <h4>Output</h4>
                     <button>Copy</button>
                  </div>
                  <div class="content-container text-output-box">
