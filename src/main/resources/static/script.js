@@ -5,11 +5,15 @@ const audioPlayer = document.getElementById("audio-player");
 const fileInput = document.getElementById("file-input");
 const downloadBtn = document.getElementById("download-btn");
 
+const sendBtn = document.getElementById("send-btn");
+
 const recordContainer = document.getElementById("record-input-container");
 const uploadContainer = document.getElementById("upload-input-container");
 
 const openRecordBtn = document.getElementById("open-record-btn");
 const openUploadBtn = document.getElementById("open-upload-btn");
+
+const audioContainer = document.querySelector(".audio-container");
 
 openRecordBtn.addEventListener("click", () => {
     openRecordBtn.disabled = true;
@@ -27,18 +31,39 @@ openUploadBtn.addEventListener("click", () => {
     uploadContainer.hidden = false;
 });
 
+sendBtn.addEventListener("click", async () => {
+    if (!recordedBlob) return;
+
+    const data = new FormData();
+
+    data.append(
+        "audio-file",       // field name
+        recordedBlob,       // contents
+        "recording.webm"    // content file name
+    );
+
+    const response = await fetch("/api/send-audio", {
+        method: "POST",
+        body: data
+    });
+
+    result = await response.text();
+
+    console.log(result);
+});
+
 let chunks = [];
 let isRecording = false;
-let recordingURL = null;
+let recordedBlob = null;
 let mediaRecorder = null;
 const constraints = { audio: true };
 
 downloadBtn.addEventListener("click", () => {
-    if (!recordingURL) return;
+    if (!recordedBlob) return;
 
     const downloadLink = document.createElement("a");
 
-    downloadLink.href = recordingURL;
+    downloadLink.href = recordedBlob;
     downloadLink.download = "recording.webm";
 
     downloadLink.click();
@@ -56,24 +81,24 @@ recordBtn.addEventListener("click", async () => {
             mediaRecorder.addEventListener("stop", (e) => {
                 console.log("onstop fired");
 
-                const blob = new Blob(chunks, { type: "audio/webm" });
-                if (recordingURL) URL.revokeObjectURL(recordingURL);
-                recordingURL = URL.createObjectURL(blob);
+                recordedBlob = new Blob(chunks, { type: "audio/webm" });
                 downloadBtn.disabled = false;
 
-                handleAudio(blob);
+                handleAudio(recordedBlob);
             });
             mediaRecorder.addEventListener("error", (e) => {
                 console.error("An error occurred:", e);
             });
         }
         isRecording = true;
+        audioContainer.classList.add("recording");
         recordBtn.textContent = "Stop";
         chunks = [];
         mediaRecorder.start();
         console.log("recorder started");
     } else {
         isRecording = false;
+        audioContainer.classList.remove("recording");
         recordBtn.textContent = "Record";
         mediaRecorder.stop();
         console.log("recorder stopped");
@@ -84,12 +109,13 @@ const audioFileInput = document.getElementById("audioFile");
 const fileName = document.getElementById("fileStatus");
 
 function handleAudio(audio) {
-    fileName.textContent = `Selected: ${audio.name}`;
+    fileName.textContent = (recordedBlob) 
+        ? `Selected: New Recording`
+        : `Selected: ${audio.name}`;
     audioPlayer.src = window.URL.createObjectURL(audio);
 }
 
 fileInput.addEventListener("change", function () {
-
     const file = fileInput.files[0];
 
     if (file) {
