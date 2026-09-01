@@ -6,10 +6,14 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
 import java.io.IOException;
+import java.io.InputStream;
+
+import com.openai.client.OpenAIClient;
+import com.openai.client.okhttp.OpenAIOkHttpClient;
+import com.openai.core.MultipartField;
+import com.openai.models.audio.transcriptions.TranscriptionCreateParams;
+import java.nio.file.Path;
 
 // https://api.openai.com/v1/audio/transcriptions 
 
@@ -35,16 +39,19 @@ public class AudioController {
             System.out.println("Yes key");
         }
 
-        HttpClient client = HttpClient.newHttpClient();
-        HttpRequest request = HttpRequest.newBuilder()
-            .uri(URI.create(api_endpoint))
-            .GET()
-            .build();
+        OpenAIClient client = OpenAIOkHttpClient.fromEnv();
 
-        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        var result =
+            client
+                .audio()
+                .transcriptions()
+                .create(
+                    TranscriptionCreateParams.builder()
+                        .file(file.getInputStream())
+                        .model("gpt-4o-mini-transcribe")
+                        .build());
 
-        System.out.println(response.statusCode());
-        System.out.println(response.body());
+        System.out.println(result.asTranscription().text());
         return "";
     }
 }
