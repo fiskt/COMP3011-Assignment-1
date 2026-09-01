@@ -15,6 +15,8 @@ const openUploadBtn = document.getElementById("open-upload-btn");
 
 const audioContainer = document.querySelector(".audio-container");
 
+const textOutput = document.querySelector("text-output-box");
+
 openRecordBtn.addEventListener("click", () => {
     openRecordBtn.disabled = true;
     openUploadBtn.disabled = false;
@@ -48,6 +50,7 @@ sendBtn.addEventListener("click", async () => {
     });
 
     result = await response.text();
+    if (result != "") textOutput.textContent = result;
 
     console.log(result);
 });
