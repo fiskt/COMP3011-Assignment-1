@@ -50,9 +50,7 @@ sendBtn.addEventListener("click", async () => {
     });
 
     result = await response.text();
-    if (result != "") textOutput.textContent = result;
-
-    console.log(result);
+    textOutput.textContent = result;
 });
 
 let chunks = [];
