@@ -7,28 +7,9 @@ const sendBtn = document.getElementById("send-btn");
 
 const recordContainer = document.getElementById("record-input-container");
 
-const openRecordBtn = document.getElementById("open-record-btn");
-const openUploadBtn = document.getElementById("open-upload-btn");
-
 const audioContainer = document.querySelector(".audio-container");
 
-const textOutput = document.querySelector("text-output-box");
-
-openRecordBtn.addEventListener("click", () => {
-    openRecordBtn.disabled = true;
-    openUploadBtn.disabled = false;
-
-    recordContainer.hidden = false;
-    uploadContainer.hidden = true;
-});
-
-openUploadBtn.addEventListener("click", () => {
-    openRecordBtn.disabled = false;
-    openUploadBtn.disabled = true;
-
-    recordContainer.hidden = true;
-    uploadContainer.hidden = false;
-});
+const textOutput = document.querySelector(".text-output-box");
 
 sendBtn.addEventListener("click", async () => {
     if (!recordedBlob) return;
@@ -46,7 +27,7 @@ sendBtn.addEventListener("click", async () => {
         body: data
     });
 
-    result = await response.text();
+    var result = await response.text();
     textOutput.textContent = result;
 });
 
@@ -69,9 +50,7 @@ recordBtn.addEventListener("click", async () => {
                 console.log("onstop fired");
 
                 recordedBlob = new Blob(chunks, { type: "audio/webm" });
-                downloadBtn.disabled = false;
-
-                handleAudio(recordedBlob);
+                audioPlayer.src = window.URL.createObjectURL(recordedBlob);
             });
             mediaRecorder.addEventListener("error", (e) => {
                 console.error("An error occurred:", e);
@@ -91,22 +70,3 @@ recordBtn.addEventListener("click", async () => {
         console.log("recorder stopped");
     }
 })
-
-const audioFileInput = document.getElementById("audioFile");
-const fileName = document.getElementById("fileStatus");
-
-function handleAudio(audio) {
-    fileName.textContent = (recordedBlob) 
-        ? `Selected: New Recording`
-        : `Selected: ${audio.name}`;
-    audioPlayer.src = window.URL.createObjectURL(audio);
-}
-
-fileInput.addEventListener("change", function () {
-    const file = fileInput.files[0];
-
-    if (file) {
-        handleAudio(file);
-    }
-});
-

@@ -30,7 +30,7 @@ public class AudioController {
     ) throws IOException, InterruptedException {
         if (file.isEmpty()) return "Empty audio file.";
 
-        OpenAIClient client = OpenAIOkHttpClient.fromEnv();
+        OpenAIClient client = OpenAIOkHttpClient.fromEnv(); 
         var result = client
             .audio()
             .transcriptions()
@@ -39,6 +39,7 @@ public class AudioController {
                     .file(file.getInputStream())
                     .model("gpt-4o-mini-transcribe")
                     .build());
+
         
         long inputTokens = result.asTranscription().usage().orElseThrow().asTokens().inputTokens(); 
         long outputTokens = result.asTranscription().usage().orElseThrow().asTokens().outputTokens(); 
