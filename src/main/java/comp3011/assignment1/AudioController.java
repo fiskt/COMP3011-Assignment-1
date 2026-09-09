@@ -6,9 +6,11 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.io.InputStream;
 
 import com.openai.client.OpenAIClient;
 import com.openai.client.okhttp.OpenAIOkHttpClient;
+import com.openai.core.MultipartField;
 import com.openai.models.audio.transcriptions.TranscriptionCreateParams;
 
 
@@ -30,22 +32,37 @@ public class AudioController {
     ) throws IOException, InterruptedException {
         if (file.isEmpty()) return "Empty audio file.";
 
+        MultipartField<InputStream> audioFile =
+            MultipartField.<InputStream>builder()
+                .value(file.getInputStream())
+                .filename(file.getOriginalFilename())
+                .contentType(file.getContentType())
+                .build();
+
         OpenAIClient client = OpenAIOkHttpClient.fromEnv(); 
         var result = client
             .audio()
             .transcriptions()
             .create(
                 TranscriptionCreateParams.builder()
-                    .file(file.getInputStream())
+                    .file(audioFile)
                     .model("gpt-4o-mini-transcribe")
                     .build());
 
         
-        long inputTokens = result.asTranscription().usage().orElseThrow().asTokens().inputTokens(); 
-        long outputTokens = result.asTranscription().usage().orElseThrow().asTokens().outputTokens(); 
+        var transcription = result.asTranscription();
+        if (transcription.usage().isPresent()) {
+            var usage = transcription.usage().get();
 
-        tokenCounter.addTokens(inputTokens, outputTokens);
-        String output = result.asTranscription().text();
-        return output;
+            if (usage.isTokens()) {
+                var tokens = usage.asTokens();
+                tokenCounter.addTokens(
+                    tokens.inputTokens(),
+                    tokens.outputTokens()
+                );
+            }
+        }
+
+        return transcription.text();
     }
 }

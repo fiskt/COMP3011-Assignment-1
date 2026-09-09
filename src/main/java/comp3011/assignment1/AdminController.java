@@ -17,12 +17,16 @@ public class AdminController {
         this.tokenCounter = tokenCounter;
     }
     private final Instant serverStarttime = Instant.now();
-    private final boolean shutdown = false;
+    private boolean shutdown = false;
 
     private record ServerUptime(
         Instant utcServerStart, 
         Instant utcNow,
         double serverUptimeSeconds
+    ) {}
+
+    private record ShutdownResponse(
+        String message
     ) {}
 
     private record GlobalStats(
@@ -83,11 +87,15 @@ public class AdminController {
                 return ResponseEntity
                     .status(409)
                     .body(shutdownError);
-            } else {
-                return ResponseEntity
-                    .status(202)
-                    .body("Graceful shutdown requested.");
-            }
+            } 
+            
+            shutdown = true;
+            ShutdownResponse shutdownResponse = new ShutdownResponse(
+                "Graceful shutdown requested."
+            );
+            return ResponseEntity
+                .status(202)
+                .body(shutdownResponse);
         } catch (Exception e) {
             ErrorResponse shutdownError = new ErrorResponse(
                 serverNow, 
