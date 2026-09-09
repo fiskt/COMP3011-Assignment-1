@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.openai.models.beta.realtime.ResponseCreateEvent.Response;
+
 @RestController
 public class AdminController {
     private final TokenCounter tokenCounter;
@@ -15,6 +17,7 @@ public class AdminController {
         this.tokenCounter = tokenCounter;
     }
     private final Instant serverStarttime = Instant.now();
+    private final boolean shutdown = false;
 
     private record ServerUptime(
         Instant utcServerStart, 
@@ -66,8 +69,37 @@ public class AdminController {
     }
 
     @PostMapping("/api/v1/admin/shutdown") 
-    public void shutdownServer() {
-        return;
+    public ResponseEntity<?> shutdownServer() {
+        Instant serverNow = Instant.now();
+        try {
+            if (shutdown) {
+                ErrorResponse shutdownError = new ErrorResponse(
+                    serverNow, 
+                    409, 
+                    "Conflict", 
+                    "Graceful shutdown is already in progress.", 
+                    "/api/v1/admin/shutdown"
+                );
+                return ResponseEntity
+                    .status(409)
+                    .body(shutdownError);
+            } else {
+                return ResponseEntity
+                    .status(202)
+                    .body("Graceful shutdown requested.");
+            }
+        } catch (Exception e) {
+            ErrorResponse shutdownError = new ErrorResponse(
+                serverNow, 
+                500, 
+                "Internal Server Error", 
+                "An unexpected server error occurred.", 
+                "/api/v1/admin/shutdown"
+            );
+            return ResponseEntity
+                .status(500)
+                .body(shutdownError);
+        }
     }
 
     @GetMapping("/api/v1/global/stats")
@@ -94,5 +126,4 @@ public class AdminController {
                 .body(globalStatsError);
         }
     }
-
 }

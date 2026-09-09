@@ -2,13 +2,10 @@ const inputType = "recording";
 
 const recordBtn = document.getElementById("record-btn");
 const audioPlayer = document.getElementById("audio-player");
-const fileInput = document.getElementById("file-input");
-const downloadBtn = document.getElementById("download-btn");
 
 const sendBtn = document.getElementById("send-btn");
 
 const recordContainer = document.getElementById("record-input-container");
-const uploadContainer = document.getElementById("upload-input-container");
 
 const openRecordBtn = document.getElementById("open-record-btn");
 const openUploadBtn = document.getElementById("open-upload-btn");
@@ -58,17 +55,6 @@ let isRecording = false;
 let recordedBlob = null;
 let mediaRecorder = null;
 const constraints = { audio: true };
-
-downloadBtn.addEventListener("click", () => {
-    if (!recordedBlob) return;
-
-    const downloadLink = document.createElement("a");
-
-    downloadLink.href = recordedBlob;
-    downloadLink.download = "recording.webm";
-
-    downloadLink.click();
-});
 
 recordBtn.addEventListener("click", async () => {
     if (!isRecording) {

@@ -70,6 +70,13 @@ body {
     border-color: var(--danger) !important;
 }
 
+.recording-controls {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
 
 .audio-container > div:first-child {
     display: flex;

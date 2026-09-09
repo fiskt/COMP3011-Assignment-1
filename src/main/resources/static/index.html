@@ -20,29 +20,15 @@
                 <div>
                     <div id="input-type-container">
                         <button id="open-record-btn" disabled>Record Audio</button>
-                        <button id="open-upload-btn">Upload Audio</button>
                     </div>
                     <div class="input-container" id="record-input-container">
                         <!-- Recording -->
-    
                         <button id="record-btn">Record</button>
-                        <button id="download-btn" disabled>Download</button>
-                    </div>
-    
-                    <div class="input-container" id="upload-input-container" hidden>
-                        <!-- File Upload -->
-                         
-                        <input
-                            type="file"
-                            accept="audio/webm"
-                            id="file-input"
-                        />
                     </div>
                 </div>
 
-                <div class="content-container">
+                <div class="content-container recording-controls">
                     <!-- Controls -->
-                    <p id="fileStatus">No audio file selected</p>
                     <audio
                         id="audio-player"
                         controls
@@ -58,11 +44,10 @@
                  <div id="text-output-controls">
                     <!-- Copy buttons -->
                     <h4>Output</h4>
-                    <button>Copy</button>
                  </div>
-                 <div class="content-container text-output-box">
+                 <div class="content-container">
                     <!-- Scrollable text output -->
-                    <p>Output text goes here</p>
+                    <p class="text-output-box"></p>
                  </div>
             </div>
         </div>
