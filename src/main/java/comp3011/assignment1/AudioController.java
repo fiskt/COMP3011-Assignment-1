@@ -32,6 +32,7 @@ public class AudioController {
     ) throws IOException, InterruptedException {
         if (file.isEmpty()) return "Empty audio file.";
 
+        // ref : https://github.com/openai/openai-java
         MultipartField<InputStream> audioFile =
             MultipartField.<InputStream>builder()
                 .value(file.getInputStream())
@@ -39,6 +40,7 @@ public class AudioController {
                 .contentType(file.getContentType())
                 .build();
 
+        // ref : https://github.com/openai/openai-java
         OpenAIClient client = OpenAIOkHttpClient.fromEnv(); 
         var result = client
             .audio()
@@ -50,6 +52,7 @@ public class AudioController {
                     .build());
 
         
+        // Partly AI assisted (ChatGPT)
         var transcription = result.asTranscription();
         if (transcription.usage().isPresent()) {
             var usage = transcription.usage().get();

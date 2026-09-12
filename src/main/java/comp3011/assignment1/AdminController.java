@@ -11,16 +11,19 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class AdminController {
-    private final TokenCounter tokenCounter;
+    // ref : https://stackoverflow.com/questions/12584992/how-to-get-current-server-time-in-java
     private final Instant serverStarttime = Instant.now();
-    private boolean shutdown = false;
+    
+    // ref : https://stackoverflow.com/questions/56121514/sharing-an-instance-of-a-class-across-a-spring-boot-application
+    private final TokenCounter tokenCounter;
     private final ConfigurableApplicationContext applicationContext;
-
     public AdminController(TokenCounter tokenCounter, ConfigurableApplicationContext applicationContext) {
         this.tokenCounter = tokenCounter;
         this.applicationContext = applicationContext;
     }
-
+    
+    private boolean shutdown = false;
+    
     private record ServerUptime(
         Instant utcServerStart, 
         Instant utcNow,
