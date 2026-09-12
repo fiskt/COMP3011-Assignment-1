@@ -48,7 +48,7 @@ public class AdminController {
     ) {}
 
     // Current time function to get current time
-    // and for forcing errors in testing responses
+    // and for forcing errors in testing response
     protected Instant currentTime() {
         return Instant.now();
     }
@@ -71,7 +71,7 @@ public class AdminController {
                 .body(uptime);
         } catch (Exception e) {
             ErrorResponse uptimeError = new ErrorResponse(
-                currentTime(),
+                Instant.now(),
                 500, 
                 "Internal Server Error",
                 "An unexpected server error occurred.", 
@@ -126,7 +126,7 @@ public class AdminController {
                 .body(shutdownResponse);
         } catch (Exception e) {
             ErrorResponse shutdownError = new ErrorResponse(
-                currentTime(), 
+                Instant.now(), 
                 500, 
                 "Internal Server Error", 
                 "An unexpected server error occurred.", 
@@ -151,7 +151,7 @@ public class AdminController {
                 .body(globalStats);
         } catch (Exception e) {
             ErrorResponse globalStatsError = new ErrorResponse(
-                currentTime(), 
+                Instant.now(), 
                 500, 
                 "Internal Server Error", 
                 "An unexpected server error occurred.", 

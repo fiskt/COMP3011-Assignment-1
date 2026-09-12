@@ -35,29 +35,29 @@
 
  :: Spring Boot ::                (v4.1.1)
 
-2026-09-12T16:23:00.460+09:30  INFO 8214 --- [COMP3011-Assignment-1] [           main] c.a.Comp3011Assignment1Application       : Starting Comp3011Assignment1Application using Java 24.0.2 with PID 8214 (/Users/jerrywu/COMP3011-Assignment-1/target/classes started by jerrywu in /Users/jerrywu/COMP3011-Assignment-1)
-2026-09-12T16:23:00.461+09:30  INFO 8214 --- [COMP3011-Assignment-1] [           main] c.a.Comp3011Assignment1Application       : No active profile set, falling back to 1 default profile: "default"
-2026-09-12T16:23:00.714+09:30  INFO 8214 --- [COMP3011-Assignment-1] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
-2026-09-12T16:23:00.720+09:30  INFO 8214 --- [COMP3011-Assignment-1] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2026-09-12T16:23:00.720+09:30  INFO 8214 --- [COMP3011-Assignment-1] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.24]
-2026-09-12T16:23:00.734+09:30  INFO 8214 --- [COMP3011-Assignment-1] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 254 ms
-2026-09-12T16:23:00.763+09:30  INFO 8214 --- [COMP3011-Assignment-1] [           main] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page: class path resource [static/index.html]
-2026-09-12T16:23:00.837+09:30  INFO 8214 --- [COMP3011-Assignment-1] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
-2026-09-12T16:23:00.839+09:30  INFO 8214 --- [COMP3011-Assignment-1] [           main] c.a.Comp3011Assignment1Application       : Started Comp3011Assignment1Application in 0.51 seconds (process running for 0.636)
-2026-09-12T16:23:04.528+09:30  INFO 8214 --- [COMP3011-Assignment-1] [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-09-12T16:23:04.528+09:30  INFO 8214 --- [COMP3011-Assignment-1] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2026-09-12T16:23:04.530+09:30  INFO 8214 --- [COMP3011-Assignment-1] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
-2026-09-12T16:23:08.460+09:30 ERROR 8214 --- [COMP3011-Assignment-1] [nio-8080-exec-2] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: com.openai.errors.UnauthorizedException: 401: Incorrect API key provided: TEST_SEC*****2345. You can find your API key at https://platform.openai.com/account/api-keys.] with root cause
+2026-09-12T19:05:13.002+09:30  INFO 42256 --- [COMP3011-Assignment-1] [           main] c.a.Comp3011Assignment1Application       : Starting Comp3011Assignment1Application using Java 24.0.2 with PID 42256 (/Users/jerrywu/COMP3011-Assignment-1/target/classes started by jerrywu in /Users/jerrywu/COMP3011-Assignment-1)
+2026-09-12T19:05:13.003+09:30  INFO 42256 --- [COMP3011-Assignment-1] [           main] c.a.Comp3011Assignment1Application       : No active profile set, falling back to 1 default profile: "default"
+2026-09-12T19:05:13.264+09:30  INFO 42256 --- [COMP3011-Assignment-1] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-09-12T19:05:13.270+09:30  INFO 42256 --- [COMP3011-Assignment-1] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-09-12T19:05:13.271+09:30  INFO 42256 --- [COMP3011-Assignment-1] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.24]
+2026-09-12T19:05:13.290+09:30  INFO 42256 --- [COMP3011-Assignment-1] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 267 ms
+2026-09-12T19:05:13.320+09:30  INFO 42256 --- [COMP3011-Assignment-1] [           main] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page: class path resource [static/index.html]
+2026-09-12T19:05:13.397+09:30  INFO 42256 --- [COMP3011-Assignment-1] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-09-12T19:05:13.399+09:30  INFO 42256 --- [COMP3011-Assignment-1] [           main] c.a.Comp3011Assignment1Application       : Started Comp3011Assignment1Application in 0.536 seconds (process running for 0.671)
+2026-09-12T19:05:30.737+09:30  INFO 42256 --- [COMP3011-Assignment-1] [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-09-12T19:05:30.738+09:30  INFO 42256 --- [COMP3011-Assignment-1] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-09-12T19:05:30.739+09:30  INFO 42256 --- [COMP3011-Assignment-1] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-09-12T19:05:35.720+09:30 ERROR 42256 --- [COMP3011-Assignment-1] [nio-8080-exec-5] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: com.openai.errors.UnauthorizedException: 401: Incorrect API key provided: API_KEY_**3456. You can find your API key at https://platform.openai.com/account/api-keys.] with root cause
 
-com.openai.errors.UnauthorizedException: 401: Incorrect API key provided: TEST_SEC*****2345. You can find your API key at https://platform.openai.com/account/api-keys.
+com.openai.errors.UnauthorizedException: 401: Incorrect API key provided: API_KEY_**3456. You can find your API key at https://platform.openai.com/account/api-keys.
 	at com.openai.errors.UnauthorizedException$Builder.build(UnauthorizedException.kt:96) ~[openai-java-core-4.55.0.jar:4.55.0]
 	at com.openai.core.handlers.ErrorHandler$errorHandler$1.handle(ErrorHandler.kt:57) ~[openai-java-core-4.55.0.jar:4.55.0]
 	at com.openai.core.handlers.ErrorHandler$errorHandler$1.handle(ErrorHandler.kt:44) ~[openai-java-core-4.55.0.jar:4.55.0]
 	at com.openai.services.blocking.audio.TranscriptionServiceImpl$WithRawResponseImpl.create(TranscriptionServiceImpl.kt:103) ~[openai-java-core-4.55.0.jar:4.55.0]
 	at com.openai.services.blocking.audio.TranscriptionServiceImpl.create(TranscriptionServiceImpl.kt:50) ~[openai-java-core-4.55.0.jar:4.55.0]
 	at com.openai.services.blocking.audio.TranscriptionService.create(TranscriptionService.kt:37) ~[openai-java-core-4.55.0.jar:4.55.0]
-	at comp3011.assignment1.OpenAITranscription.transcribe(OpenAITranscription.java:39) ~[classes/:na]
-	at comp3011.assignment1.AudioController.receivedAudio(AudioController.java:26) ~[classes/:na]
+	at comp3011.assignment1.OpenAITranscription.transcribe(OpenAITranscription.java:42) ~[classes/:na]
+	at comp3011.assignment1.AudioController.receivedAudio(AudioController.java:28) ~[classes/:na]
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
 	at java.base/java.lang.reflect.Method.invoke(Method.java:565) ~[na:na]
 	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:252) ~[spring-web-7.0.9.jar:7.0.9]
@@ -102,11 +102,11 @@ com.openai.errors.UnauthorizedException: 401: Incorrect API key provided: TEST_S
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:74) ~[tomcat-embed-core-11.0.24.jar:11.0.24]
 	at java.base/java.lang.Thread.run(Thread.java:1447) ~[na:na]
 
-2026-09-12T16:23:32.654+09:30  INFO 8214 --- [COMP3011-Assignment-1] [ionShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
-2026-09-12T16:23:32.664+09:30  INFO 8214 --- [COMP3011-Assignment-1] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-09-12T19:05:44.382+09:30  INFO 42256 --- [COMP3011-Assignment-1] [ionShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-09-12T19:05:44.392+09:30  INFO 42256 --- [COMP3011-Assignment-1] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  33.434 s
-[INFO] Finished at: 2026-09-12T16:23:33+09:30
+[INFO] Total time:  32.686 s
+[INFO] Finished at: 2026-09-12T19:05:44+09:30
 [INFO] ------------------------------------------------------------------------
