@@ -50,7 +50,7 @@ recordBtn.addEventListener("click", async () => {
                 chunks.push(e.data);
             });
 
-            mediaRecorder.addEventListener("stop", (e) => {
+            mediaRecorder.addEventListener("stop", async() => {
                 console.log("onstop fired");
 
                 recordedBlob = new Blob(chunks, { type: "audio/webm" });
