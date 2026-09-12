@@ -3,16 +3,14 @@ const inputType = "recording";
 const recordBtn = document.getElementById("record-btn");
 const audioPlayer = document.getElementById("audio-player");
 
-const sendBtn = document.getElementById("send-btn");
-
 const recordContainer = document.getElementById("record-input-container");
 
 const audioContainer = document.querySelector(".audio-container");
 
 const textOutput = document.querySelector(".text-output-box");
 
-sendBtn.addEventListener("click", async () => {
-    if (!recordedBlob) return;
+async function sendAudio(recordedBlob) {
+     if (!recordedBlob) return;
 
     const data = new FormData();
 
@@ -22,14 +20,19 @@ sendBtn.addEventListener("click", async () => {
         "recording.webm"    // content file name
     );
 
-    const response = await fetch("/api/send-audio", {
-        method: "POST",
-        body: data
-    });
+    try {
+        const response = await fetch("/api/send-audio", {
+            method: "POST",
+            body: data
+        });
 
-    var result = await response.text();
-    textOutput.textContent = result;
-});
+        var result = await response.text();
+        textOutput.textContent = result;
+    } catch (error) {
+        textOutput.textContent = "Failed to transcribe audio.";
+        console.error(error);
+    }
+}
 
 let chunks = [];
 let isRecording = false;
@@ -46,12 +49,16 @@ recordBtn.addEventListener("click", async () => {
                 console.log("Data available");
                 chunks.push(e.data);
             });
+
             mediaRecorder.addEventListener("stop", (e) => {
                 console.log("onstop fired");
 
                 recordedBlob = new Blob(chunks, { type: "audio/webm" });
                 audioPlayer.src = window.URL.createObjectURL(recordedBlob);
+
+                await sendAudio(recordedBlob);
             });
+
             mediaRecorder.addEventListener("error", (e) => {
                 console.error("An error occurred:", e);
             });
