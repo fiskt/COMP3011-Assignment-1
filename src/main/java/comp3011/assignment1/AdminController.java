@@ -3,21 +3,23 @@ package comp3011.assignment1;
 import java.time.Duration;
 import java.time.Instant;
 
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.openai.models.beta.realtime.ResponseCreateEvent.Response;
-
 @RestController
 public class AdminController {
     private final TokenCounter tokenCounter;
-    public AdminController(TokenCounter tokenCounter) {
-        this.tokenCounter = tokenCounter;
-    }
     private final Instant serverStarttime = Instant.now();
     private boolean shutdown = false;
+    private final ConfigurableApplicationContext applicationContext;
+
+    public AdminController(TokenCounter tokenCounter, ConfigurableApplicationContext applicationContext) {
+        this.tokenCounter = tokenCounter;
+        this.applicationContext = applicationContext;
+    }
 
     private record ServerUptime(
         Instant utcServerStart, 
@@ -73,7 +75,7 @@ public class AdminController {
     }
 
     @PostMapping("/api/v1/admin/shutdown") 
-    public ResponseEntity<?> shutdownServer() {
+    public synchronized ResponseEntity<?> shutdownServer() {
         Instant serverNow = Instant.now();
         try {
             if (shutdown) {
@@ -90,6 +92,20 @@ public class AdminController {
             } 
             
             shutdown = true;
+
+            // shutdown thread sourced from AI (ChatGPT)
+            Thread shutdownThread = new Thread(() -> {
+                try {
+                    Thread.sleep(200);
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                }
+
+                applicationContext.close();
+            });
+            shutdownThread.setName("graceful-shutdown");
+            shutdownThread.start();
+
             ShutdownResponse shutdownResponse = new ShutdownResponse(
                 "Graceful shutdown requested."
             );
