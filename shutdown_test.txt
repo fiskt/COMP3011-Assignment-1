@@ -1,0 +1,58 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------------< COMP3011:COMP3011-Assignment-1 >-------------------
+[INFO] Building COMP3011-Assignment-1 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] >>> spring-boot:4.1.1:run (default-cli) > test-compile @ COMP3011-Assignment-1 >>>
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ COMP3011-Assignment-1 ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] Copying 5 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.15.0:compile (default-compile) @ COMP3011-Assignment-1 ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ COMP3011-Assignment-1 ---
+[INFO] skip non existing resourceDirectory /Users/jerrywu/COMP3011-Assignment-1/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.15.0:testCompile (default-testCompile) @ COMP3011-Assignment-1 ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] <<< spring-boot:4.1.1:run (default-cli) < test-compile @ COMP3011-Assignment-1 <<<
+[INFO] 
+[INFO] 
+[INFO] --- spring-boot:4.1.1:run (default-cli) @ COMP3011-Assignment-1 ---
+[INFO] Attaching agents: []
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.1)
+
+2026-09-12T16:46:51.751+09:30  INFO 13483 --- [COMP3011-Assignment-1] [           main] c.a.Comp3011Assignment1Application       : Starting Comp3011Assignment1Application using Java 24.0.2 with PID 13483 (/Users/jerrywu/COMP3011-Assignment-1/target/classes started by jerrywu in /Users/jerrywu/COMP3011-Assignment-1)
+2026-09-12T16:46:51.752+09:30  INFO 13483 --- [COMP3011-Assignment-1] [           main] c.a.Comp3011Assignment1Application       : No active profile set, falling back to 1 default profile: "default"
+2026-09-12T16:46:52.098+09:30  INFO 13483 --- [COMP3011-Assignment-1] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-09-12T16:46:52.105+09:30  INFO 13483 --- [COMP3011-Assignment-1] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-09-12T16:46:52.105+09:30  INFO 13483 --- [COMP3011-Assignment-1] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.24]
+2026-09-12T16:46:52.123+09:30  INFO 13483 --- [COMP3011-Assignment-1] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 346 ms
+2026-09-12T16:46:52.159+09:30  INFO 13483 --- [COMP3011-Assignment-1] [           main] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page: class path resource [static/index.html]
+2026-09-12T16:46:52.249+09:30  INFO 13483 --- [COMP3011-Assignment-1] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-09-12T16:46:52.251+09:30  INFO 13483 --- [COMP3011-Assignment-1] [           main] c.a.Comp3011Assignment1Application       : Started Comp3011Assignment1Application in 0.654 seconds (process running for 0.887)
+2026-09-12T16:46:53.192+09:30  INFO 13483 --- [COMP3011-Assignment-1] [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-09-12T16:46:53.192+09:30  INFO 13483 --- [COMP3011-Assignment-1] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-09-12T16:46:53.193+09:30  INFO 13483 --- [COMP3011-Assignment-1] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2026-09-12T16:47:19.862+09:30  WARN 13483 --- [COMP3011-Assignment-1] [nio-8080-exec-8] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported]
+2026-09-12T17:42:35.677+09:30  INFO 13483 --- [COMP3011-Assignment-1] [ionShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-09-12T17:42:35.700+09:30  INFO 13483 --- [COMP3011-Assignment-1] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  55:45 min
+[INFO] Finished at: 2026-09-12T17:42:35+09:30
+[INFO] ------------------------------------------------------------------------
